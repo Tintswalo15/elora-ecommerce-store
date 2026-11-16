@@ -1,0 +1,223 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ÉLORA | Luxury Boutique</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+    <header class="navbar">
+        <a href="#home" class="logo">ÉLORA<span>.</span></a>
+
+        <nav>
+            <a href="#home">HOME</a>
+            <a href="#products">SHOP</a>
+        </nav>
+
+        <button id="cartButton" class="cart-button">
+            Cart <span id="cartCount">0</span>
+        </button>
+    </header>
+
+    <main>
+        <!-- HERO -->
+        <section class="hero" id="home">
+            <div class="hero-content">
+                <p class="eyebrow">THE ART OF ELEVATED SHOPPING</p>
+                <h1>Discover your<br>signature style.</h1>
+                <p class="hero-description">
+                    Explore our carefully curated collection of quality products.
+                </p>
+                <a href="#products" class="shop-button">SHOP NOW</a>
+            </div>
+        </section>
+
+        <!-- PRODUCTS -->
+        <section class="products-section" id="products">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">OUR COLLECTION</p>
+                    <h2>Explore Products</h2>
+                </div>
+
+                <input
+                    type="search"
+                    id="searchInput"
+                    placeholder="Search products..."
+                    aria-label="Search products"
+                >
+            </div>
+
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-category="all">ALL</button>
+                <button class="filter-btn" data-category="electronics">ELECTRONICS</button>
+                <button class="filter-btn" data-category="jewelery">JEWELRY</button>
+                <button class="filter-btn" data-category="men's clothing">MEN'S CLOTHING</button>
+                <button class="filter-btn" data-category="women's clothing">WOMEN'S CLOTHING</button>
+            </div>
+
+            <div id="productContainer" class="product-grid">
+                <p>Loading products...</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- PRODUCT DETAILS MODAL -->
+    <div id="productModal" class="modal">
+        <div class="modal-content product-modal-content">
+            <button id="closeProductModal" class="close-button" aria-label="Close">&times;</button>
+
+            <div class="product-details-layout">
+                <img id="detailImage" src="" alt="Product image">
+
+                <div>
+                    <p id="detailCategory" class="eyebrow"></p>
+                    <h2 id="detailTitle"></h2>
+                    <p id="detailRating" class="product-rating"></p>
+                    <p id="detailPrice" class="product-price"></p>
+                    <p id="detailDescription"></p>
+                    <button id="detailAddToCart" class="primary-button">
+                        ADD TO CART
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CART OVERLAY -->
+    <div id="cartOverlay" class="cart-overlay"></div>
+
+    <!-- CART DRAWER -->
+    <aside id="cartDrawer" class="cart-drawer">
+        <div class="cart-header">
+            <h2>Your Shopping Bag</h2>
+            <button id="closeCart" class="close-button" aria-label="Close cart">&times;</button>
+        </div>
+
+        <div id="cartItems" class="cart-items">
+            <p class="empty-cart">Your cart is currently empty.</p>
+        </div>
+
+        <div class="cart-summary">
+            <div><span>Subtotal</span><strong id="subtotal">$0.00</strong></div>
+            <div><span>Tax (15%)</span><strong id="tax">$0.00</strong></div>
+            <div><span>Shipping</span><strong id="shipping">$0.00</strong></div>
+            <div class="total-row"><span>Total</span><strong id="total">$0.00</strong></div>
+
+            <button id="checkoutButton" class="primary-button checkout-button">
+                PROCEED TO CHECKOUT
+            </button>
+        </div>
+    </aside>
+
+    <!-- CHECKOUT MODAL -->
+   
+<!-- CHECKOUT MODAL -->
+<div id="checkoutModal" class="modal">
+    <div class="modal-content checkout-content">
+
+        <button id="closeModal" class="close-button" aria-label="Close checkout">
+            &times;
+        </button>
+
+        <div id="checkoutForm">
+
+            <p class="eyebrow">A REFINED SHOPPING EXPERIENCE</p>
+            <h2>Complete Your Order</h2>
+
+            <p class="checkout-description">
+                Please provide your details below to complete your purchase.
+            </p>
+
+            <form id="orderForm">
+
+                <div class="form-group">
+                    <label for="customerName">Full name</label>
+                    <input
+                        id="customerName"
+                        type="text"
+                        placeholder="Enter your full name"
+                        autocomplete="name"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="customerEmail">Email address</label>
+                    <input
+                        id="customerEmail"
+                        type="email"
+                        placeholder="Enter your email address"
+                        autocomplete="email"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="customerAddress">Delivery address</label>
+                    <textarea
+                        id="customerAddress"
+                        placeholder="Street address, city, postal code"
+                        autocomplete="street-address"
+                        required
+                    ></textarea>
+                </div>
+
+                <div class="checkout-order-summary">
+                    <h3>Oder Summary</h3>
+                    <div id="checkoutOrderSummary"></div>
+                </div>
+
+                <div class="checkout-note">
+                    <span>Order total</span>
+                    <strong id="checkoutTotal">$0.00</strong>
+                </div>
+
+                <button type="submit" class="primary-button">
+                    PLACE MY ORDER
+                </button>
+
+                <p class="secure-note">
+                    Your order details are used for this demo checkout.
+                </p>
+
+            </form>
+        </div>
+
+        <div id="orderConfirmation" class="hidden">
+
+            <p class="eyebrow">THANK YOU FOR CHOOSING ÉLORA</p>
+            <h2>Order Confirmed!</h2>
+
+            <p>
+                Your demo order has been successfully placed.
+                We appreciate your support.
+            </p>
+
+            <p id="orderNumber"></p>
+
+            <button id="continueShopping" class="primary-button">
+                CONTINUE SHOPPING
+            </button>
+
+        </div>
+
+    </div>
+</div>
+
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <a href="#home" class="logo">ÉLORA<span>.</span></a>
+        <p>Thoughtfully selected. Beautifully delivered.</p>
+        <small>&copy; 2026 ÉLORA. All rights reserved.</small>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
